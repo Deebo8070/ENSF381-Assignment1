@@ -280,23 +280,23 @@ footer {
     
 }
 
-.first td {
+.firstrow td {
     background-color:#ffd700;
     
 }
 
-.second td {
+.secondrow td {
     background-color:#c0c0c0;
 }
 
-.third td {
+.thirdrow td {
     background-color: #cd7f32;
 }
 
-.fourth td {
+.fourthrow td {
     background-color: #f9f9f9;
 }
 
-.fifth td {
+.fifthrow td {
     background-color: #e4e2e2;
 }
