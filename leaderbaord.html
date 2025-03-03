@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <link rel="stylesheet" href="styles.css">
+        <title>Leaderboard - LMS</title>
     </head>
     <body>
+        <header>
         <img style="width: 100px; height: 100px;" src="logo.jpg" alt="logo"> 
         <h1>LMS - Learning Management System</h1>
+        </header>
         <div>
-         <tr>
-          <td><a href="index.html">Homepage</a> </td>
+         <nav>
+          <a href="index.html">Homepage</a> </td>
           |
-          <td><a href="course_view.html">Courses</a> </td>
+          <a href="course_view.html">Courses</a> </td>
           <br> <br>
-
+         </nav>
+         </div>
+         <main>
+            <div class="leaderboard">
           <table style="width: 100%; border-collapse: collapse;"   border= "1px"  >
-            <tr>
+            <tr class="theader">
                 <th colspan="5" style="background-color: rgb(68, 165, 68); color: white;font-size: xx-large;">Leaderboard</th>
                 
 
@@ -29,7 +35,7 @@
 
             </tr>
 
-            <tr style="background-color: gold;" align="center">
+            <tr class="first">
                 <td>1</td>
                 <td><img src="student.png" alt="student" style="width: 50px; height: 50px;"></td>
                 <td>John Doe</td>
@@ -38,7 +44,7 @@
 
             </tr>
 
-            <tr style="background-color: silver;" align="center">
+            <tr class="second">
                 <td rowspan="2"> 2</td>
                 <td><img src="student.png" alt="student" style="width: 50px; height: 50px;"></td>
                 <td>Jane Smith</td>
@@ -47,7 +53,7 @@
 
             </tr>
 
-            <tr style="background-color: silver;" align="center">
+            <tr class="second">
                 <td><img src="student.png" alt="student" style="width: 50px; height: 50px;"></td>
                 <td>Emily White</td>
                 <td>90</td>
@@ -55,7 +61,7 @@
 
             </tr>
 
-            <tr style="background-color: peru;" align="center">
+            <tr class="third">
                 <td>3</td>
                 <td><img src="student.png" alt="student" style="width: 50px; height: 50px;"></td>
                 <td>Michle Brown</td>
@@ -64,7 +70,7 @@
 
             </tr>
 
-            <tr style="background-color: white;" align="center">
+            <tr class="fourth">
                 <td>4</td>
                 <td><img src="student.png" alt="student" style="width: 50px; height: 50px;"></td>
                 <td>Sarah Johnson</td>
@@ -73,9 +79,9 @@
 
             </tr>
 
-            <tr style="background-color: lightgray;" align="center">
-                <td>4</td>
-                <th><img src="student.png" alt="student" style="width: 50px; height: 50px;"></th>
+            <tr class="fifth">
+                <td>5</td>
+                <td><img src="student.png" alt="student" style="width: 50px; height: 50px;"></td>
                 <td>Rob Miller</td>
                 <td>75</td>
                 <td>Networking</td>
@@ -83,6 +89,8 @@
             </tr>
 
           </table>
+        </div>
+    </main>
     </body>
     <br>
     

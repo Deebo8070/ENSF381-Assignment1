@@ -1,0 +1,302 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; 
+}
+
+
+header {
+    background-color: #004080; 
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+header img {
+    border-radius: 10px; 
+    
+}
+
+header h1 {
+    color: white;
+    margin: 0;
+    font-size: 24px;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #003366; 
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    
+}
+
+nav a:hover {
+    text-decoration: underline;
+    background-color: #004080; 
+}
+
+
+.indexmain {
+    flex: auto; 
+    background-color: #d4d4d4; 
+    padding: 20px;
+    text-align: center;
+    margin: 20px;  
+    
+}
+
+.indexmain h2 {
+    color: #004080; /* Deep blue */
+}
+
+
+
+
+
+footer {
+    background-color: #004080; /* Deep blue */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px; 
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); 
+    
+
+}
+
+.loginmain {
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    background-color: #d4d4d4;
+    padding: 30px;
+    margin: 150px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 6px #939393;
+
+}
+
+.loginmain h2 {
+    text-align: center;
+    color: white;
+
+}
+.loginmain form{
+    text-align: center;
+}
+
+#username {
+    background-color: lightyellow;
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid darkgrey;
+}
+
+#password {
+    background-color: lightyellow;
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid darkgrey;
+}
+
+.login {
+    background-color: #008000;
+    color: white;;
+}
+
+.login:hover {
+    background-color: #006000;
+}
+
+.forgotPassword {
+    color: #004080;
+    text-decoration: none;
+}
+
+.forgotPassword:hover {
+    text-decoration: underline;
+}
+
+.courseterm {
+    display: flex;
+    justify-content: center;
+}
+
+.courseterm label {
+    display: flex;
+    align-items: center;
+}
+
+.courseterm select {
+    background-color: lightyellow;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.Enrolled h2 {
+    text-align: center;
+    color:#004080;
+}
+
+.Enrolled table tr td{
+    background-color: #e6f2ff;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /*box shadow*/
+}
+
+.Enrolled table tr td p {
+    display: flex;
+    justify-content: center;
+} 
+
+.Enrolled table tr td a {
+    display: flex;
+    justify-content: center;
+}
+
+.Enrolled img {
+    width: 100%;
+    height: 100%;
+}
+
+.accept {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.accept:hover {
+    background-color: #265e28;
+}
+
+.decline {
+    background-color: #D32F2F;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.decline:hover {
+    background-color: #821b1b;
+}
+
+.qmain {
+    text-align: center;
+}
+
+.quizbanner {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.Quizdetails {
+    background-color: lightblue;
+    text-align: center;
+    padding: 20px;
+    margin-right: 250px;
+    margin-left: 250px;
+}
+
+.Quizdetails h2 {
+    color: darkblue;
+}
+
+.quizquestions {
+    background-color: #cacaca;
+    padding: 20px;
+    margin-right: 30%;
+    margin-left: 30%;
+    text-align: left;
+}
+
+.quizsubmit {
+    margin: 10px;
+    background-color: lightblue;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quizsubmit:hover {
+    background-color: darkblue;
+    color: white;
+}
+
+.quizfinish {
+    background-color: #D32F2F;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quizfinish:hover {
+    background-color: #821b1b;
+}
+
+
+.theader td{
+    background-color: #4CAF50;
+    color: white;
+    column-span: all;
+    font-size: 35px;
+}
+
+.leaderboard table {
+    border-collapse: collapse;
+    border: white;
+}
+
+.leaderboard img{
+    border: 2px solid black;
+    border-radius: 100%;
+    
+}
+
+.first td {
+    background-color:#ffd700;
+    
+}
+
+.second td {
+    background-color:#c0c0c0;
+}
+
+.third td {
+    background-color: #cd7f32;
+}
+
+.fourth td {
+    background-color: #f9f9f9;
+}
+
+.fifth td {
+    background-color: #e4e2e2;
+}
