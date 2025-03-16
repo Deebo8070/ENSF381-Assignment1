@@ -7,6 +7,55 @@
         <link rel="stylesheet" href="styles.css">
         
     </head>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select all accept and decline buttons
+            const acceptButtons = document.querySelectorAll(".accept");
+            const declineButtons = document.querySelectorAll(".decline");
+        
+            acceptButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const courseCard = button.closest("td"); // Get the course card
+                    const enrolledSection = document.querySelector(".Enrolled table"); // Target enrolled courses
+        
+                    // Remove Accept/Decline buttons
+                    courseCard.querySelector(".accept").remove();
+                    courseCard.querySelector(".decline").remove();
+        
+                    // Add "Attempt Quiz" button
+                    const quizLink = document.createElement("a");
+                    quizLink.href = "attempt_quiz.html";
+                    quizLink.textContent = "Attempt Quiz";
+                    courseCard.appendChild(quizLink);
+        
+                    // Move course to enrolled section
+                    enrolledSection.appendChild(courseCard);
+                });
+            });
+        
+            declineButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const courseCard = button.closest("td"); // Get the course card
+                    courseCard.remove(); // Remove from UI
+                });
+            });
+        
+            // Hover effect for courses
+            const courseCards = document.querySelectorAll(".Enrolled table tr td");
+        
+            courseCards.forEach(card => {
+                card.addEventListener("mouseenter", function () {
+                    card.style.backgroundColor = "#ffffff"; // Change background color on hover
+                });
+        
+                card.addEventListener("mouseleave", function () {
+                    card.style.backgroundColor = "#e6f2ff"; // Reset background color
+                });
+            });
+        });
+        </script>
+        
     <body>
         <header>
        <img style="width: 100px; height: 100px;" src="logo.jpg" alt="logo"> 
