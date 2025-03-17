@@ -3,72 +3,85 @@
     <head>
         <link rel="stylesheet" href="styles.css">
         <script>
-                   
-            let time = 600;
+            let time = 600; // 10 minutes in seconds
             let marks = 0;
+            let timerInterval;
+            let q1Answered = false;
+            let q2Part1Answered = false;
+            let q2Part2Answered = false;
 
-            function timing() {
-                const timer = document.getElementById('timer');
-                time--;
-                let minutes = time / 60;
-                minutes = minutes - minutes % 1;
-                let seconds = time - minutes * 60;
-                if (minutes == 0) {
-                    timer.textContent = (seconds < 10) ? 'Time Remaining: ' + '0' + ':' + '0' + seconds : 'Time Remaining: ' + minutes + ':' + seconds;
-                } else {
-                    timer.textContent = (seconds < 10) ? 'Time Remaining: ' + minutes + ':' + '0' + seconds : 'Time Remaining: ' + minutes + ':' + seconds;
-                }
-                if (time == 0) {
-                    window.location.href = 'leaderboard.html';
-                }
+            function startTimer() {
+                timerInterval = setInterval(() => {
+                    const timer = document.getElementById('timer');
+                    time--;
+                    let minutes = Math.floor(time / 60);
+                    let seconds = time % 60;
+                    timer.textContent = `Time Remaining: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    if (time <= 0) {
+                        clearInterval(timerInterval);
+                        alert('Time is up!');
+                        window.location.href = 'leaderboard.html';
+                    }
+                }, 1000);
             }
 
-            let correctQ1 = false;
-            let correctQ2 = false;
-
             function checkQ1() {
+                const finalMark = document.getElementById('finalMark');
                 const answer1 = document.getElementById('q1answer1').checked;
                 const answer2 = document.getElementById('q1answer2').checked;
 
-                const finalMark = document.getElementById('finalMark');
-
-                if (!correctQ1) {
-                    if (answer1) {
-                        marks = marks + 50;
-                        correctQ1 = true;  // Mark question 1 as answered
-                    } else if (answer2) {
-                        alert('This answer is incorrect.');
-                    } else {
-                        alert('This answer is incomplete.');
-                    }
-                    finalMark.textContent = 'Final Mark: ' + marks + ' / 100';
+                if (q1Answered) {
+                    alert('You have already answered this question!');
+                    return;
                 }
+
+                if (!answer1 && !answer2) {
+                    alert('Please select an answer before submitting.');
+                    return;
+                }
+
+                if (answer1) {
+                    marks += 50;
+                    q1Answered = true;
+                    alert('Correct answer! +50 points');
+                } else if (answer2) {
+                    q1Answered = true;
+                    alert('Incorrect answer. 0 points');
+                }
+                
+                finalMark.textContent = `Final Mark: ${marks} / 100`;
             }
 
-            let q1Answered = false;
-            let q2Answered = false;
-
             function checkQ2() {
+                const finalMark = document.getElementById('finalMark');
                 const answer1 = document.getElementById('q2answer1').checked;
                 const answer2 = document.getElementById('q2answer2').checked;
 
-                const finalMark = document.getElementById('finalMark');
+                if (!answer1 && !answer2) {
+                    alert('Please select at least one answer before submitting.');
+                    return;
+                }
 
-                if (!q1Answered && answer1) {
-                    marks = marks + 25;
-                    q1Answered = true;  // Mark question 2 part 1 as answered
+                if (answer1 && !q2Part1Answered) {
+                    marks += 25;
+                    q2Part1Answered = true;
+                    alert('Correct answer for <div>! +25 points');
                 }
-                if (!q2Answered && answer2) {
-                    marks = marks + 25;
-                    q2Answered = true;  // Mark question 2 part 2 as answered
+                if (answer2 && !q2Part2Answered) {
+                    marks += 25;
+                    q2Part2Answered = true;
+                    alert('Correct answer for <span>! +25 points');
                 }
-                if (!(answer1 || answer2)) {
-                    alert('This answer is incomplete or incorrect.');
-                }
-                finalMark.textContent = 'Final Mark: ' + marks + ' / 100';
+                
+                finalMark.textContent = `Final Mark: ${marks} / 100`;
             }
 
-            setInterval(timing, 1000);
+            // Source: https://www.w3schools.com/jsref/met_win_setinterval.asp
+            window.onload = startTimer;
+
+            // Clean up timer when leaving page
+            window.onbeforeunload = () => clearInterval(timerInterval);
         </script>
     </head>
     <body>
@@ -92,8 +105,8 @@
                 <p>Topic: HTML Basics</p>
                 <p>Deadline: 11:59 PM, February 10, 2025</p>
                 <p>Attempts Allowed: 1</p>
-                <p id="timer">Time Remaining: 10:00</p> <!-- Timer display -->
-                <p id="finalMark">Final Mark: 0 / 100</p> <!-- Final score display -->
+                <p id="timer">Time Remaining: 10:00</p>
+                <p id="finalMark">Final Mark: 0 / 100</p>
             </div>
 
             <h3>Question 1</h3>
@@ -108,8 +121,7 @@
                     <br>
                 </form>
             </div>
-                <button class="quizsubmit" type="button" onclick="checkQ1()">Submit Answer</button>
-            
+            <button class="quizsubmit" type="button" onclick="checkQ1()">Submit Answer</button>
 
             <h3>Question 2</h3>
             <p>Which of the following are HTML elements? (Select all that apply)</p>
@@ -123,8 +135,7 @@
                     <br>
                 </form>
             </div>
-                <button class="quizsubmit" type="button" onclick="checkQ2()">Submit Answer</button>
-            
+            <button class="quizsubmit" type="button" onclick="checkQ2()">Submit Answer</button>
 
             <br><br>
             <a href="leaderboard.html">
