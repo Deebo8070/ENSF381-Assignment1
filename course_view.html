@@ -7,54 +7,91 @@
         <link rel="stylesheet" href="styles.css">
         
     </head>
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Select all accept and decline buttons
+           
             const acceptButtons = document.querySelectorAll(".accept");
             const declineButtons = document.querySelectorAll(".decline");
-        
+    
             acceptButtons.forEach(button => {
                 button.addEventListener("click", function () {
-                    const courseCard = button.closest("td"); // Get the course card
-                    const enrolledSection = document.querySelector(".Enrolled table"); // Target enrolled courses
-        
-                    // Remove Accept/Decline buttons
+                    const courseCard = button.closest("td"); 
+                    const enrolledTable = document.querySelector(".Enrolled table tbody"); 
+                    const pendingRow = button.closest("tr"); courses
+                    
+                    
                     courseCard.querySelector(".accept").remove();
                     courseCard.querySelector(".decline").remove();
-        
-                    // Add "Attempt Quiz" button
+    
+                    
                     const quizLink = document.createElement("a");
                     quizLink.href = "attempt_quiz.html";
                     quizLink.textContent = "Attempt Quiz";
                     courseCard.appendChild(quizLink);
-        
-                    // Move course to enrolled section
-                    enrolledSection.appendChild(courseCard);
+    
+                    
+                    const img = courseCard.querySelector("img");
+                    img.src = "course1.jpg"; 
+    
+                    
+                    let emptySlot = enrolledTable.querySelector("td:empty");
+    
+                    if (emptySlot) {
+                        
+                        emptySlot.replaceWith(courseCard);
+                    } else {
+                        
+                        let lastRow = enrolledTable.querySelector("tr:last-child");
+    
+                        
+                        if (!lastRow || lastRow.children.length >= 3) {
+                            lastRow = document.createElement("tr");  
+                            enrolledTable.appendChild(lastRow);
+                        }
+    
+                        
+                        lastRow.appendChild(courseCard);
+                    }
+    
+                    
+                    if (pendingRow.children.length === 0) {
+                        pendingRow.remove();
+                    }
                 });
             });
-        
+    
             declineButtons.forEach(button => {
                 button.addEventListener("click", function () {
-                    const courseCard = button.closest("td"); // Get the course card
-                    courseCard.remove(); // Remove from UI
+                    const courseCard = button.closest("td"); 
+                    const pendingRow = button.closest("tr");
+    
+                    courseCard.remove(); 
+    
+                    
+                    if (pendingRow.children.length === 0) {
+                        pendingRow.remove();
+                    }
                 });
             });
-        
-            // Hover effect for courses
+    
+           
             const courseCards = document.querySelectorAll(".Enrolled table tr td");
-        
+    
             courseCards.forEach(card => {
                 card.addEventListener("mouseenter", function () {
-                    card.style.backgroundColor = "#ffffff"; // Change background color on hover
+                    card.style.backgroundColor = "#ffffff"; 
                 });
-        
+    
                 card.addEventListener("mouseleave", function () {
-                    card.style.backgroundColor = "#e6f2ff"; // Reset background color
+                    card.style.backgroundColor = "#e6f2ff"; 
                 });
             });
         });
-        </script>
+    </script>
+    
+    
+
         
     <body>
         <header>
