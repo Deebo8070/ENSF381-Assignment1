@@ -62,9 +62,9 @@
 
             let usernameError = "";
             if (usernameInput === "") {
-                usernameError = "Invalid username (Reason: Field cannot be empty)";
+                usernameError = "Invalid username (Field cannot be empty)";
             } else if (!/^[a-zA-Z][a-zA-Z0-9_-]{2,19}$/.test(usernameInput)) {
-                usernameError = "Invalid username (Reason: Must be 3-20 characters, start with a letter, and contain only alphanumeric characters, hyphens, or underscores (no spaces))";
+                usernameError = "Invalid username Must be 3-20 characters, start with a letter, and contain only alphanumeric characters, hyphens, or underscores (no spaces))";
             }
             if (usernameError) {
                 resultDiv.innerHTML += `<p>${usernameError}</p>`;
@@ -73,9 +73,9 @@
 
             let passwordError = "";
             if (passwordInput === "") {
-                passwordError = "Invalid password (Reason: Field cannot be empty)";
+                passwordError = "Invalid password (Field cannot be empty)";
             } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+[\]{}|;:'",.<>?/`~])[A-Za-z\d!@#$%^&*()\-_=+[\]{}|;:'",.<>?/`~]{8,}$/.test(passwordInput)) {
-                passwordError = "Invalid password (Reason: Must be at least 8 characters, include one uppercase, one lowercase, one number, and one special character (!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~), no spaces)";
+                passwordError = "Invalid password (Must be at least 8 characters, include one uppercase, one lowercase, one number, and one special character (!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~), no spaces)";
             }
             if (passwordError) {
                 resultDiv.innerHTML += `<p>${passwordError}</p>`;
@@ -83,7 +83,7 @@
             }
 
             if (confirmInput === "") {
-                resultDiv.innerHTML += "<p>Passwords do not match (Reason: Field cannot be empty)</p>";
+                resultDiv.innerHTML += "<p>Passwords do not match (Field cannot be empty)</p>";
                 isValid = false;
             } else if (passwordInput !== confirmInput) {
                 resultDiv.innerHTML += "<p>Passwords do not match</p>";
@@ -92,9 +92,9 @@
 
             let emailError = "";
             if (emailInput === "") {
-                emailError = "Invalid email (Reason: Field cannot be empty)";
+                emailError = "Invalid email (Field cannot be empty)";
             } else if (!/^[^\s@]+@[^\s@]+\.(com|net|io)$/.test(emailInput)) {
-                emailError = "Invalid email (Reason: Must be a valid format (e.g., username@example.com), no spaces, and use .com, .net, or .io)";
+                emailError = "Invalid email (Must be a valid format (e.g., username@example.com), no spaces, and use .com, .net, or .io)";
             }
             if (emailError) {
                 resultDiv.innerHTML += `<p>${emailError}</p>`;
