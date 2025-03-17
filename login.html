@@ -1,45 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="styles.css">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        async function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
 
-    </head>
-    <body>
-        <header>
+            let usernameInput = document.getElementById("username").value.trim();
+            let passwordInput = document.getElementById("password").value.trim();
+            let messageBox = document.getElementById("messageBox");
+
+            if (!usernameInput || !passwordInput) {
+                showMessage("Please enter both username and password.", "error");
+                return;
+            }
+
+            try {
+                let response = await fetch("https://jsonplaceholder.typicode.com/users");
+                let users = await response.json();
+
+                let user = users.find(u => u.username === usernameInput && u.email === passwordInput);
+
+                if (user) {
+                    showMessage("Login successful! Redirecting...", "success");
+                    setTimeout(() => {
+                        window.location.href = "course_view.html";
+                    }, 2000);
+                } else {
+                    showMessage("Invalid username or password. Try again.", "error");
+                }
+            } catch (error) {
+                showMessage("Error fetching user data. Please try again later.", "error");
+            }
+        }
+
+        function showMessage(message, type) {
+            let messageBox = document.getElementById("messageBox");
+            messageBox.innerText = message;
+            messageBox.className = type;
+            messageBox.style.display = "block";
+            
+        }
+    </script>
+    
+</head>
+<body>
+    <header>
         <img style="width: 100px; height: 100px;" src="logo.jpg" alt="logo"> 
-       <h1>LMS - Learning Management System</h1>
-       <h2>LMS Login</h2>
-        </header>
-       <div>
-        <nav>
+        <h1>LMS - Learning Management System</h1>
+        <h2>LMS Login</h2>
+    </header>
+
+    <nav>
         <a href="index.html">Homepage</a>
-        </nav>
+    </nav>
 
-       </div>
-       <main class="loginmain">
-            <div class="login-form">
-                <form>
-
+    <main class="loginmain">
+        <div class="login-form">
+            <form onsubmit="validateLogin(event)">
                 <label for="username">Username:</label> <br>
                 <input type="text" id="username" name="username">
-                <br>
-                <br>
+                <br><br>
 
                 <label for="password">Password:</label> <br>
-                <input type="password" id="password" name="password" required >
-                <br>
-                <br>
-                <button class="login" type="submit" formaction="course_view.html">Login</button><br><br>
+                <input type="password" id="password" name="password" required>
+                <br><br>
+
+                <button class="login" type="submit">Login</button>
+                <br><br>
+
                 <a class="forgotPassword" href="#">Forgot Password?</a>
+                <br><br>
+
+                <a href="singup.html">New User? Sign Up Here</a>
             </form>
-        
+
+            <div id="messageBox" class="messageBox"></div>
         </div>
-        </main>
+    </main>
 
-        <footer>
-            © 2025 LMS. All rights reserved.
-            </footer>
-
-       
-    </body>
+    <footer>
+        © 2025 LMS. All rights reserved.
+    </footer>
+</body>
 </html>
+
+
