@@ -300,3 +300,55 @@ footer {
 .fifthrow td {
     background-color: #e4e2e2;
 }
+
+.signup {
+    background-color: #4CAF50;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    opacity: 0.5;
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 100px;
+}
+
+.signup:hover {
+    background-color: #45A049;
+    opacity: 1.0;
+}
+
+
+input {
+    width: 300px; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+
+.result {
+    color: black;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ffcccc;
+    border-radius: 5px;
+    background-color: #fff0f0;
+    display: none;
+    width: 300px; 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.result.show {
+    display: block;
+}
+
+.forgotPassword {
+    display: block; 
+    text-align: center;
+    margin-top: 10px; 
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - LMS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img style="width: 100px; height: 100px;" src="logo.jpg" alt="logo"> 
+        <h1>LMS - Learning Management System</h1>
+    </header>
+    <div>
+        <nav>
+            <a href="index.html">Homepage</a>
+        </nav>
+    </div>
+    
+    <main class="loginmain">
+        <div class="login-form">
+            <form>
+                <label for="username">Username:</label> <br>
+                <input type="text" id="username" name="username" required>
+                <br>
+
+                <label for="password">Password:</label> <br>
+                <input type="password" id="password" name="password" required>
+                <br>
+
+                <label for="confirmPassword">Confirm Password:</label> <br>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <br>
+
+                <label for="email">Email:</label> <br>
+                <input type="text" id="email" name="email" required>
+                <br>
+
+                <button class="signup" type="button" onclick="formValidation()">Signup</button>
+                <div class="result" id="result"></div>
+                <a class="forgotPassword" href="login.html">Already have an account? Login here</a>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 LMS. All rights reserved.
+    </footer>
+
+    <script>
+        function formValidation() {
+            const usernameInput = document.getElementById("username").value.trim();
+            const passwordInput = document.getElementById("password").value.trim();
+            const confirmInput = document.getElementById("confirmPassword").value.trim();
+            const emailInput = document.getElementById("email").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            resultDiv.innerHTML = "";
+            resultDiv.classList.remove("show");
+
+            let isValid = true;
+
+            let usernameError = "";
+            if (usernameInput === "") {
+                usernameError = "Invalid username (Reason: Field cannot be empty)";
+            } else if (!/^[a-zA-Z][a-zA-Z0-9_-]{2,19}$/.test(usernameInput)) {
+                usernameError = "Invalid username (Reason: Must be 3-20 characters, start with a letter, and contain only alphanumeric characters, hyphens, or underscores (no spaces))";
+            }
+            if (usernameError) {
+                resultDiv.innerHTML += `<p>${usernameError}</p>`;
+                isValid = false;
+            }
+
+            let passwordError = "";
+            if (passwordInput === "") {
+                passwordError = "Invalid password (Reason: Field cannot be empty)";
+            } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+[\]{}|;:'",.<>?/`~])[A-Za-z\d!@#$%^&*()\-_=+[\]{}|;:'",.<>?/`~]{8,}$/.test(passwordInput)) {
+                passwordError = "Invalid password (Reason: Must be at least 8 characters, include one uppercase, one lowercase, one number, and one special character (!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~), no spaces)";
+            }
+            if (passwordError) {
+                resultDiv.innerHTML += `<p>${passwordError}</p>`;
+                isValid = false;
+            }
+
+            if (confirmInput === "") {
+                resultDiv.innerHTML += "<p>Passwords do not match (Reason: Field cannot be empty)</p>";
+                isValid = false;
+            } else if (passwordInput !== confirmInput) {
+                resultDiv.innerHTML += "<p>Passwords do not match</p>";
+                isValid = false;
+            }
+
+            let emailError = "";
+            if (emailInput === "") {
+                emailError = "Invalid email (Reason: Field cannot be empty)";
+            } else if (!/^[^\s@]+@[^\s@]+\.(com|net|io)$/.test(emailInput)) {
+                emailError = "Invalid email (Reason: Must be a valid format (e.g., username@example.com), no spaces, and use .com, .net, or .io)";
+            }
+            if (emailError) {
+                resultDiv.innerHTML += `<p>${emailError}</p>`;
+                isValid = false;
+            }
+
+            if (!isValid) {
+                resultDiv.classList.add("show");
+            } else {
+                resultDiv.innerHTML = "<p>Signup successful! Redirecting to login...</p>";
+                resultDiv.classList.add("show");
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>
